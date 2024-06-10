@@ -144,3 +144,7 @@ dist
 # Built Visual Studio Code Extensions
 *.vsix
 
+_site/
+.idea
+_tmp/
+.cache/

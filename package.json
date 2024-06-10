@@ -1,0 +1,50 @@
+{
+  "name": "meri-doc",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "debug": "DEBUG=* npx eleventy",
+    "clean": "rm -rf _site",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "doc",
+    "md",
+    "markdown",
+    "documentation",
+    "html"
+  ],
+  "author": "Pavel V. Yefimov",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@11ty/eleventy-plugin-directory-output": "^1.0.1",
+    "@iktakahiro/markdown-it-katex": "^3.0.4",
+    "eleventy-plugin-toc": "^1.1.5",
+    "markdown-it": "^14.1.0",
+    "markdown-it-abbr": "^2.0.0",
+    "markdown-it-admon": "^1.0.1",
+    "markdown-it-anchor": "^9.0.1",
+    "markdown-it-attrs": "^4.1.6",
+    "markdown-it-center-text": "^1.0.4",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-deflist": "^3.0.0",
+    "markdown-it-eleventy-img": "^0.10.2",
+    "markdown-it-emoji": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-for-inline": "^2.0.1",
+    "markdown-it-linkify-images": "^4.0.0",
+    "markdown-it-multimd-table": "^4.2.3",
+    "markdown-it-replace-it": "^1.0.0",
+    "markdown-it-sub": "^2.0.0",
+    "markdown-it-sup": "^2.0.0",
+    "markdown-it-table-of-contents": "^0.6.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "markdown-it-textual-uml": "^0.12.0",
+    "markdown-it-toc-done-right": "^4.2.0"
+  }
+}
