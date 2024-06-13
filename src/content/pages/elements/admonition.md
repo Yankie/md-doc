@@ -18,6 +18,8 @@ title: Примечания
 
 {% for admonition in admonitionTypes %}
 
+## {{ admonition | upper }}
+
 !!!{{admonition}} {{ admonition | upper }}
     Always include the `prose` class when adding a gray scale modifier
 
