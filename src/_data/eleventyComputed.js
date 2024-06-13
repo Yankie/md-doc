@@ -21,11 +21,13 @@ module.exports = {
     eleventyNavigation: {
         key: (data) =>  {
             // console.log("Pages: Key: ", {
+            //     data: data,
             //     pageUrl: data.page.url,
             //     title: data.title,
             //     fileSlug: data.page.fileSlug,
             //     return: data.eleventyNavigation.key || slugify(data.page.url.replace(/\//mg, ' '), {lower: true}) || '__top'
             // });
+            if(data.permalink === false) { return false }
             return slugify(data.page.url.replace(/\//mg, ' '), {lower: true}) || '__top'
             // return data.eleventyNavigation.key || data.page.url
         },
@@ -35,6 +37,7 @@ module.exports = {
             //     title: data.title,
             //     return: data.eleventyNavigation.title || data.title || data.page.url.replace(/\//mg, ' ').trim()
             // });
+            if(data.permalink === false) { return false }
             return data.title || str_title(data.page.url.replace(/\//mg, ' ').trim())
         },
         parent: (data) => {
@@ -52,6 +55,7 @@ module.exports = {
             //         return: data.page.url === '/' ? '' : ( data.eleventyNavigation.parent || slugify(path.dirname(data.page.url).replace(/\//mg, ' '), {lower: true}) || '__top')
             //     }
             // );
+            if(data.permalink === false) { return false }
             return data.page.url === '/' ? '' : ( slugify(path.dirname(data.page.url).replace(/\//mg, ' '), {lower: true}) || '__top')
         },
         // order: (data) => {

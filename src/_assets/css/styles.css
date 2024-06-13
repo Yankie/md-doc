@@ -131,8 +131,13 @@ header {
   background-color: lightblue;
   z-index: 1020;
 }
-header > p {
+header > div {
+  width: 100%;
+}
+header > div > p:first-of-type {
   font-size: 3rem;
+}
+header > div p {
   margin: 0;
 }
 header nav {
@@ -259,7 +264,7 @@ table.fs-tree-table tbody {
 table.fs-tree-table tr td {
   padding-top: 0;
   padding-bottom: 0;
-  line-height: 1.2;
+  line-height: 1.0;
 }
 table.fs-tree-table tr td:first-child {
   font-family: monospace;

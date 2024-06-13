@@ -123,11 +123,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.on("eleventy.contentMap", async ({inputPathToUrl, urlToInputPath}) => {
     // inputPathToUrl is an object mapping input file paths to output URLs
     // urlToInputPath is an object mapping output URLs to input file paths
-    // console.log("in event: ", contentMap)
+    // console.log("in event: ", {inputPathToUrl, urlToInputPath})
     let newInputPathToUrl = {}
     Object.keys(inputPathToUrl).map((k) => {
       let v = inputPathToUrl[k];
-      return newInputPathToUrl[k] = !!v[0].endsWith(path.sep) ? [v[0]+'index.html'] : [ v[0] ]
+      return newInputPathToUrl[k] = (!!v[0] && !!v[0].endsWith(path.sep)) ? [v[0]+'index.html'] : [ v[0] ]
     })
 
     contentMap = {
@@ -151,6 +151,10 @@ module.exports = function(eleventyConfig) {
     // let srcData = this;
     let srcFileDir = path.dirname(this.page.inputPath);
     let srcUrl = contentMap.inputPathToUrl[this.page.inputPath][0];
+
+    // skip processings if `permalink: false` in frontmatter
+    if(srcUrl === false) { return content }
+
     let modifier = posthtml().use(
       urls({
         eachURL: function (url) {
