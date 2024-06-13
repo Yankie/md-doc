@@ -21,13 +21,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventyPluginTOC)
 
   eleventyConfig.addCollection("allPathSorted", function (collectionApi) {
-		return collectionApi.getAll().sort(function (a, b) {
-			return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
-		});
-	});
+    return collectionApi.getAll().sort(function (a, b) {
+      return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
+    });
+  });
 
   eleventyConfig.setQuietMode(true);
-	eleventyConfig.addPlugin(directoryOutputPlugin);
+  eleventyConfig.addPlugin(directoryOutputPlugin);
 
   let markdownIt = require("markdown-it");
   let markdownLibrary = markdownIt({
@@ -201,11 +201,11 @@ module.exports = function(eleventyConfig) {
     let result = await modifier.process(content, {});
     return result.html;
 
-		// console.log("in transformer: ",  this, inputDir/*, contentMap, result.html*/);
-		// console.log("in transformer: ", contentMap)
+    // console.log("in transformer: ",  this, inputDir/*, contentMap, result.html*/);
+    // console.log("in transformer: ", contentMap)
 
-		// return content; // no changes made.
-	});
+    // return content; // no changes made.
+  });
   return {
     templateFormats: ["md", "njk", "html"],
     pathPrefix: "./",
