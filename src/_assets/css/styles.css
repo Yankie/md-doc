@@ -253,6 +253,14 @@ figure.example {
   background-color: lightgray;
 }
 
+
+table {
+  border: 1px solid #8888;
+}
+
+td, th {
+  border: 1px solid #8888;
+}
 table.fs-tree-table  {
   display: block;
   /* font-size:12px; */
