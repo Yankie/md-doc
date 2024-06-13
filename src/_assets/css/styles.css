@@ -261,10 +261,12 @@ table {
 td, th {
   border: 1px solid #8888;
 }
-table.fs-tree-table  {
-  display: block;
+/* table.fs-tree-table  { */
+  /* display: table; */
   /* font-size:12px; */
-}
+  /* border: none; */
+/* } */
+
 table.fs-tree-table tbody {
   border: 1px solid #8888;
   /* overflow: hidden; */
@@ -274,10 +276,14 @@ table.fs-tree-table tr td {
   padding-bottom: 0;
   line-height: 1.0;
 }
+/* table.fs-tree-table td, table.fs-tree-table th { */
+  /* border: none; */
+/* } */
+
 table.fs-tree-table tr td:first-child {
   font-family: monospace;
-  /* border-bottom: none; */
-  /* border-top: none; */
+  border-bottom: none;
+  border-top: none;
   white-space: pre;
 }
 
