@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% include 'html-head.njk' %}
+</head>
+<body>
+  <!-- Title Page -->
+  <div>
+    <p>{{ site.title }}</p>
+    <p>{{ site.description }}</p>
+    <c>&copy {{ page.date.getFullYear() }}, {{ site.author }}
+  </div>
+
+  <article>
+    <!-- TOC -->
+
+    {% if content | toc({"tags": ["h1", "h2", "h3", "h4"]}) %}
+    <div id="toc">
+      {# <p>Contents:</p> #}
+      {{ content | toc({"tags": ["h1", "h2", "h3", "h4"],"wrapper":"div","wrapperClass":"print-toc"}) | safe }}
+    </div>  
+    {% endif %}
+
+    <!-- Rest of content -->
+
+    {{ content | safe }}
+
+  </article>
+</body>
+</html>

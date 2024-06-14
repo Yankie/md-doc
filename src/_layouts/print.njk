@@ -1,0 +1,17 @@
+---
+layout: outer-print.njk
+---
+
+{%- set contentPages = collections.allPathSorted | eleventyNavigationContent %}
+{%- set contentLevel = 0 %}
+{%- macro renderContent(entry, level) -%}
+    <h1 id="{{ entry.title | slugify }}">{{ entry.title | safe }}</h1>
+    {# <small>{{ entry.url }} - {{ level }}</small> #}
+    <hr>
+    {{ entry.content | safe }} 
+    {%- if entry.children.length -%}
+    {%- for child in entry.children %}{{ renderContent(child,level+1) }}{% endfor -%}
+    {%- endif -%}
+{%- endmacro %}
+
+{%- for entry in contentPages %}{{ renderContent(entry, contentLevel) }}{% endfor -%}
