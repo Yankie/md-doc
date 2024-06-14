@@ -151,7 +151,9 @@ pie
 "Rats" : 15
 ```
 
-## Git graph
+
+## Git graph
+
 
 
 ## Bar chart (using gantt chart)

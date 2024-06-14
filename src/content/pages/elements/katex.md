@@ -3,7 +3,7 @@ title: Формулы с kaTeX
 ---
 
 
-### Inline
+## Inline
 
 Surround your LaTeX with a single $ on each side for inline rendering. 
 
@@ -15,7 +15,7 @@ Example: $\sqrt{3x-1}+(1+x)^2$
 
 Example: $\sqrt{3x-1}+(1+x)^2$
 
-### Block
+## Block
 
 Use two ($$) for block rendering. This mode uses bigger symbols and centers the result.
 
