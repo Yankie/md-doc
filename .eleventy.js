@@ -16,12 +16,18 @@ module.exports = function(eleventyConfig) {
 
   // Filter to make all paths relative
   // eleventyConfig.addFilter('url', eleventyFilterRelativeUrl);
+	eleventyConfig.addFilter("eleventyNavigationContent", findNavigationEntriesWithContent);
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(eleventyPluginTOC)
 
   eleventyConfig.addCollection("allPathSorted", function (collectionApi) {
-    return collectionApi.getAll().sort(function (a, b) {
+    return collectionApi.getAll()
+    .filter(function(p) {
+      // console.log( p.inputPath, p.data.dontprint)
+      return !p.data.dontprint ;
+    })
+    .sort(function (a, b) {
       return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
     });
   });
@@ -41,10 +47,9 @@ module.exports = function(eleventyConfig) {
 
   /* Markdown Plugins */
   markdownLibrary.use(require("markdown-it-anchor"), {
-    level: [2, 3, 4],
+    level: [1, 2, 3, 4],
     permalink: false,
   });
-  markdownLibrary.use(require("markdown-it-toc-done-right"), { level: [2,3,4] });
   markdownLibrary.use(require("markdown-it-multimd-table"), {
     multiline: true,
     rowspan: true,
@@ -62,7 +67,7 @@ module.exports = function(eleventyConfig) {
   markdownLibrary.use(require("markdown-it-sup"));
   markdownLibrary.use(require("markdown-it-task-lists"));
   markdownLibrary.use(require("markdown-it-textual-uml"));
-  markdownLibrary.use(require("markdown-it-toc-done-right"), { level: [2,3,4] });
+  markdownLibrary.use(require("markdown-it-toc-done-right"), { level: [1,2,3,4] });
   markdownLibrary.use(require("markdown-it-linkify-images"), {
     imgClass: "p-4",
   });
@@ -148,7 +153,7 @@ module.exports = function(eleventyConfig) {
       throw new Error("Internal error: contentMap not available for `relativeUrlTransform` Transform.");
     }
 
-    // let srcData = this;
+    let srcData = this;
     let srcFileDir = path.dirname(this.page.inputPath);
     let srcUrl = contentMap.inputPathToUrl[this.page.inputPath][0];
 
@@ -177,8 +182,7 @@ module.exports = function(eleventyConfig) {
               contentMap.inputPathToUrl[contentMap.urlToInputPath[normalizedUrl]][0] : normalizedUrl
 
           const relativeUrl = path.relative(path.dirname(srcUrl), cmRelativeUrl)
-          // console.log("in transformer: ",
-          //   {
+          // console.log("in transformer: ", {
           //     inputDir: inputDir,
           //     outputDir: outputDir,
           //     srcData: srcData,
@@ -191,8 +195,7 @@ module.exports = function(eleventyConfig) {
           //     fullUrl: fullUrl,
           //     CMurl: contentMap.inputPathToUrl[fullUrl],
           //     relativeUrl:  relativeUrl
-          //   }
-          // )
+          // })
           return  !!relativeUrl.endsWith(path.delimiter) ? relativeUrl+'index.html' : relativeUrl + urlObj.search+urlObj.hash
         },
       })
@@ -227,4 +230,34 @@ function canParse(url, base) {
   } catch (error) {
     return false;
   }
+}
+
+
+function findNavigationEntriesWithContent(nodes = [], key = "") {
+	let pages = [];
+	for(let entry of nodes) {
+		// console.log(entry);
+		if(entry.data && entry.data.eleventyNavigation) {
+			let nav = entry.data.eleventyNavigation;
+			if(!key && !nav.parent || nav.parent === key) {
+				pages.push(Object.assign({}, nav, {
+					content: entry.content,
+					url: nav.url || entry.data.page.url,
+					pluginType: "eleventy-navigation"
+				}, key ? { parentKey: key } : {}));
+			}
+		}
+	}
+
+	return pages.sort(function(a, b) {
+		return (a.order || 0) - (b.order || 0);
+	}).map(function(entry) {
+		if(!entry.title) {
+			entry.title = entry.key;
+		}
+		if(entry.key) {
+			entry.children = findNavigationEntriesWithContent(nodes, entry.key);
+		}
+		return entry;
+	});
 }

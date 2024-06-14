@@ -17,7 +17,14 @@ module.exports = {
     // },
     
     // root: (data) => data.eleventy.env.root,
-    layout: "page.njk",
+    layout: (data) => {
+        // console.log("layout: ", {
+        //     Layout:  data.layout,
+        //     Page_layout:  data.page.layout
+        // });
+        // data.page.layout = data.layout || "page.njk";
+        return data.layout || "page.njk"
+    },
     eleventyNavigation: {
         key: (data) =>  {
             // console.log("Pages: Key: ", {
