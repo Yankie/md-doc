@@ -92,3 +92,4 @@ mindmap
 ## Ссылки
 
 [Полное руководство Markdown для начинающих](https://ru.markdown.net.br/)
+[4 стихии программной документации: The Grand Unified Theory of Documentation](https://habr.com/ru/companies/bercut/articles/806805/)

@@ -297,3 +297,4 @@ Rel(SystemC, customerA, "Sends e-mails to")
 
 - study `npm i mermaid-isomorphic`
 - study https://perryvw.github.io/mermaid-markdown-docs/#/
+- https://habr.com/ru/companies/X5Tech/articles/821687/
