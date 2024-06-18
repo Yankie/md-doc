@@ -197,9 +197,9 @@ section {
 section > aside {
   grid-area: sidebar;
   position: sticky;
-  top: 5rem;
+  top: 6.5rem;
   display: block;
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 12rem);
   /* padding-left: 0.25rem; */
   /* margin-left: -0.25rem; */
   overflow-y: auto;
@@ -223,10 +223,10 @@ main > div {
 section > main > aside {
   grid-area: toc;
   position: sticky;
-  top: 5rem;
+  top: 6.5rem;
   right: 0;
   z-index: 2;
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 12rem);
   overflow-y: auto;
 }
 
