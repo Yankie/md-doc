@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'PT Astra Sans';
+    src:
+      url('../fonts/pt-astra-sans_regular.woff2') format('woff2'),
+      url('../fonts/pt-astra-sans_regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'PT Mono';
+    src:
+      url('../fonts/pt-mono_regular.woff2') format('woff2'),
+      url('../fonts/pt-mono_regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    /* src: url('/assets/fonts/Material-Icons/material-icons.ttf'); // For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url('../fonts/Material-Icons/material-icons.woff2') format('woff2'),
+      url('../fonts/Material-Icons/material-icons.woff') format('woff'),
+      url('../fonts/Material-Icons/material-icons.ttf') format('truetype');
+  }
+  

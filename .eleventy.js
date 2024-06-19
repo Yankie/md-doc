@@ -14,6 +14,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/content/media/")
   eleventyConfig.addPassthroughCopy({"./src/content/media/":"/media"})
 
+  eleventyConfig.setBrowserSyncConfig({
+    files: './_site/assets/css/**/*.css'
+  });
   // Filter to make all paths relative
   // eleventyConfig.addFilter('url', eleventyFilterRelativeUrl);
 	eleventyConfig.addFilter("eleventyNavigationContent", findNavigationEntriesWithContent);

@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy",
-    "debug": "DEBUG=* npx eleventy",
+    "eleventy:serve": "eleventy --serve",
+    "eleventy:build": "eleventy",
+    "eleventy:debug": "DEBUG=* npx eleventy",
+    "sass:watch": "sass src/_scss:_site/assets/css --watch --update --color",
+    "sass:build": "sass src/_scss:_site/assets/css --no-source-map --style=compressed",
     "clean": "rm -rf _site",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "run-p -l clean sass:build sass:watch eleventy:serve",
+    "build": "run-s -l eleventy:build sass:build"
   },
   "keywords": [
     "doc",
@@ -45,6 +49,8 @@
     "markdown-it-table-of-contents": "^0.6.0",
     "markdown-it-task-lists": "^2.1.1",
     "markdown-it-textual-uml": "^0.12.0",
-    "markdown-it-toc-done-right": "^4.2.0"
+    "markdown-it-toc-done-right": "^4.2.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.77.6"
   }
 }
