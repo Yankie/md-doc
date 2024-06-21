@@ -1,65 +1,97 @@
 ---
-title: Tables
+title: Таблицы
 ---
 
+## Простая таблица
 
-## Colspan
+Разметка таблицы в общем случае:
 
-```md
+* Строка разметки = строка таблицы
+* Ячейки отделяются символом `|`
+* Пробелы не имеют значения
 
-|               |          Grouping           ||
-| First Header  | Second Header | Third Header |
-| ------------- | :-----------: | -----------: |
-| Content       |          *Long Cell*        ||
-| Content       |   **Cell**    |         Cell |
-                                              
-| New section   |     More      |         Data |
-| And more      | With an escaped '\\|'       ||
-[Prototype table]                             
-
-```
-
-|               |          Grouping           ||
-| First Header  | Second Header | Third Header |
-| ------------- | :-----------: | -----------: |
-| Content       |          *Long Cell*        ||
-| Content       |   **Cell**    |         Cell |
-                                              
-| New section   |     More      |         Data |
-| And more      | With an escaped '\\|'       ||
-[Prototype table]                             
+!!!warning ВНИМАНИЕ
+   Строка разделения заголовка и тела таблицы, состоящая из символов `|`, минимум 3х символов `-` или `=`, а также необязательного символа `:` для спецификации выравнивания в столбце (по умолчанию влево) **обязательна всегда**!
 
 
-## Rowspan
+Некоторый синтаксис Markdown разрешен внутри ячеек
 
 ```md
 
-      Stage        | Direct Products | ATP Yields |
------------------: | --------------: | ---------: |
-        Glycolysis |                       2 ATP ||
-                ^^ |          2 NADH |   3--5 ATP |
-Pyruvaye oxidation |          2 NADH |      5 ATP |
- Citric acid cycle |                       2 ATP ||
-                ^^ |          6 NADH |     15 ATP |
-                ^^ |         2 FADH2 |      3 ATP |
-    **30--32** ATP |                             ||
-[Net ATP yields per hexose]
+| Row - Col | Left aligned Col 1 | Centered Col 2 | Right aligned Col 3 |
+| :-------- | :----------------- | :------------: | ------------------: |
+| Row 1     | Cell 1-1           |   _Cell 1-2_   |            Cell 1-3 |
+| Row 2     | **Cell 2-1**       |    Cell 2-2    |            Cell 2-3 |
+| Row 3     | Cell 3-1           |    Cell 3-2    |        ~~Cell 3-3~~ |
+[Table Caption]
 
 ```
 
-      Stage        | Direct Products | ATP Yields |
------------------: | --------------: | ---------: |
-        Glycolysis |                       2 ATP ||
-                ^^ |          2 NADH |   3--5 ATP |
-Pyruvaye oxidation |          2 NADH |      5 ATP |
- Citric acid cycle |                       2 ATP ||
-                ^^ |          6 NADH |     15 ATP |
-                ^^ |         2 FADH2 |      3 ATP |
-    **30--32** ATP |                             ||
-[Net ATP yields per hexose]
+| Row - Col | Left aligned Col 1 | Centered Col 2 | Right aligned Col 3 |
+| :-------- | :----------------- | :------------: | ------------------: |
+| Row 1     | Cell 1-1           |   _Cell 1-2_   |            Cell 1-3 |
+| Row 2     | **Cell 2-1**       |    Cell 2-2    |            Cell 2-3 |
+| Row 3     | Cell 3-1           |    Cell 3-2    |        ~~Cell 3-3~~ |
+[Table Caption]
+
+!!!note ПРИМЕЧАНИЕ
+   Обратите внимание на то как задается выравнивание внутри ячеек столбца таблицы с помощью символа `:`.
+
+### Перенос строки в ячейке
+
+Часто в ячейке таблицы будет очень длинный текст, который превратит разметку таблицы в ~~ад~~ трудночитаемый код
+
+```md
+
+---|---|---
+ячейка 1|очень длинный текст, который превратит разметку таблицы в трудночитаемый код | и еще немного длинного тектса, чтобы ~~жизнь медем не казалась~~ подчеркнуть всю безнадежность ситуации | ячейка 3
+
+```
+
+---|---|---
+|ячейка 1|очень длинный текст, который превратит разметку таблицы в трудночитаемый код | и еще немного длинного тектса, чтобы ~~жизнь медем не казалась~~ подчеркнуть всю безнадежность ситуации | ячейка 3|
+
+В такой ситуации удобно использовать перенос строки в разметке таблицы с помощю символа `\` в конце строки разметки таблицы. Таким образом следующая строка кода разметки таблицы будетсовмещена поячеечно с предыдущей:
+
+```md
+
+---|---|---
+ ячейка 1 | очень длинный текст | и еще немного длинного текста,    | ячейка 3 | \
+          | для демонстрации    | чтобы ~~жизнь медом не казалась~~ |          |
+```
 
 
-## No header
+---|---|---
+ ячейка 1 | очень длинный текст | и еще немного длинного текста,    | ячейка 3 | \
+          | для демонстрации    | чтобы ~~жизнь медом не казалась~~ |          |
+
+
+
+Более сложный пример переноса строк:
+
+```md
+
+| Row - Col |   Col 1     |   Col 2     |   Col 3     |  Col 4      |
+| :-------- | :---------  | :---------  | :---------  | :---------  |
+| Row 1     | Cell 1-1    | Cell 1-2    | Cell 1-3    | Cell 1-4    |
+| Row 2     | Cell 2-1~1~ | Cell 2-2~1~ | Cell 2-3~1~ |             |\
+|           | Cell 2-1~2~ | Cell 2-2~2~ |             | Cell 2-4~2~ |\
+|           | Cell 2-1~3~ |             | Cell 2-3~3~ |             |
+| Row 3     | Cell 3-1    | Cell 3-2    | Cell 3-3    | Cell 3-4    |
+[Table Caption]
+
+```
+
+| Row - Col |   Col 1     |   Col 2     |   Col 3     |  Col 4      |
+| :-------- | :---------  | :---------  | :---------  | :---------  |
+| Row 1     | Cell 1-1    | Cell 1-2    | Cell 1-3    | Cell 1-4    |
+| Row 2     | Cell 2-1~1~ | Cell 2-2~1~ | Cell 2-3~1~ |             |\
+|           | Cell 2-1~2~ | Cell 2-2~2~ |             | Cell 2-4~2~ |\
+|           | Cell 2-1~3~ |             | Cell 2-3~3~ |             |
+| Row 3     | Cell 3-1    | Cell 3-2    | Cell 3-3    | Cell 3-4    |
+[Table Caption]
+
+### Таблица без заголовка
 
 ```md
 
@@ -85,3 +117,68 @@ Pyruvaye oxidation |          2 NADH |      5 ATP |
 |     |     |     |     |     |  ♘  |     |     |
 |  ♙  |  ♙  |  ♙  |  ♙  |     |  ♙  |  ♙  |  ♙  |
 |  ♖  |  ♘  |  ♗  |  ♕  |  ♔  |     |     |  ♖  |
+
+## Продвинутые варианты
+
+Сложные случаи для форматирования таблиц.
+
+### Colspan
+
+Слияние смежных ячеек в строке с помощью `||` (без пробелов между `|`, с пробелом будет пустая ячейка):
+
+```md
+
+|               |          Grouping           ||
+| First Header  | Second Header | Third Header |
+| ------------- | :-----------: | -----------: |
+| Content       |          *Long Cell*        ||
+| Content       |   **Cell**    |         Cell |
+| New section   |     More      |         Data |
+| And more      | With an escaped '\\|'       ||
+[Prototype table]                             
+
+```
+
+|               |          Grouping           ||
+| First Header  | Second Header | Third Header |
+| ------------- | :-----------: | -----------: |
+| Content       |          *Long Cell*        ||
+| Content       |   **Cell**    |         Cell |
+| New section   |     More      |         Data |
+| And more      | With an escaped '\\|'       ||
+[Prototype table]                             
+
+!!!note ПРИМЕЧАНИЕ
+   Обратите внимание на заголовок таблицы, состоящий из 2х строк
+
+### Rowspan
+
+Слияние смежных ячеек в столбце с помощью `^^` (разметка ячейки таблицы не должна содержать ничего кроме `^^` и пробелов):
+
+```md
+
+      Stage        | Direct Products | ATP Yields |
+-----------------: | --------------: | ---------: |
+        Glycolysis |                       2 ATP ||
+                ^^ |          2 NADH |   3--5 ATP |
+Pyruvaye oxidation |          2 NADH |      5 ATP |
+ Citric acid cycle |                       2 ATP ||
+                ^^ |          6 NADH |     15 ATP |
+                ^^ |         2 FADH2 |      3 ATP |
+                                 **30--32** ATP |||
+[Net ATP yields per hexose]
+
+```
+
+      Stage        | Direct Products | ATP Yields |
+-----------------: | --------------: | ---------: |
+        Glycolysis |                       2 ATP ||
+                ^^ |          2 NADH |   3--5 ATP |
+Pyruvaye oxidation |          2 NADH |      5 ATP |
+ Citric acid cycle |                       2 ATP ||
+                ^^ |          6 NADH |     15 ATP |
+                ^^ |         2 FADH2 |      3 ATP |
+                                 **30--32** ATP |||
+[Net ATP yields per hexose]
+
+

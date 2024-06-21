@@ -1,37 +1,38 @@
 
 ## Simple typographic replacements
 
-```md
-    (c) (C) → ©
 
-    (tm) (TM) → ™
+    `(c)`, `(C)` → © // disabled
 
-    (r) (R) → ®
+    `(tm)`, `(TM)` → ™ // disabled
 
-    +- → ±
+    `(r)`, `(R)` → ® // disabled
 
-    ... → …
+    `+-` → ±
 
-    ?.... → ?..
+    `...` → …
 
-    !.... → !..
+    `?....` → ?..
 
-    ???????? → ???
+    `!....` → !..
 
-    !!!!! → !!!
+    `????????` → ???
 
-    ,, → ,
+    `!!!!!` → !!!
 
-    -- → &ndash;, --- → &mdash;
-```
+    `,,` → 
+
+    `--` → –
+
+    `---` → —
 
 ---
 
 ## TODO
 
- - [arrows](https://symbl.cc/en/unicode-table/#arrows) `-> =>` → `→ ⇒`
+ - [arrows](https://symbl.cc/en/unicode-table/#arrows) `->`, `=>` → `→`, `⇒`
  - [fractionals](https://symbl.cc/en/search/?q=fraction) `1/2, 1/4, 3/4` → `½, ¼, ¾`
- - [multiplications](https://symbl.cc/en/00D7/) `2 x 4` → `2 × 4`
+ - [multiplications / dimensions ](https://symbl.cc/en/00D7/) `2 x 4` → `2 × 4`
  - [degrees](https://symbl.cc/en/00B0/) `20deg` → `20°`
 
 
