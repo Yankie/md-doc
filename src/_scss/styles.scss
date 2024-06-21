@@ -76,7 +76,10 @@ img {
   height: auto;
 }
 
-
+p {
+  margin-block-start: 0;
+  margin-block-end: .5em;
+}
 
 .example {
   padding: 1rem;
@@ -103,6 +106,7 @@ figure.example {
 
 table {
   border: 1px solid #8888;
+  margin-bottom: .5em;
 }
 
 td, th {
@@ -113,6 +117,9 @@ td, th {
   /* font-size:12px; */
   /* border: none; */
 /* } */
+table p {
+  margin: 0;
+}
 
 table.fs-tree-table tbody {
   border: 1px solid #8888;
