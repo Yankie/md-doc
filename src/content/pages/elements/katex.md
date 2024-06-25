@@ -12,8 +12,10 @@ Surround your LaTeX with a single $ on each side for inline rendering.
 Example: $\sqrt{3x-1}+(1+x)^2$
 
 ```
+<figure class="example"><div>
 
 Example: $\sqrt{3x-1}+(1+x)^2$
+</div></figure>
 
 ## Block
 
@@ -36,6 +38,7 @@ $$\begin{array}{c}
 \end{array}$$
 
 ```
+<figure class="example"><div>
 
 Example:
 
@@ -49,4 +52,9 @@ $$\begin{array}{c}
 \nabla \cdot \vec{\mathbf{B}} & = 0
 
 \end{array}$$
+</div></figure>
 
+
+## Links
+
+- https://github.com/KaTeX/KaTeX/wiki/

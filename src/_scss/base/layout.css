@@ -1,0 +1,118 @@
+
+html {
+  font-family: PT Astra Sans, sans-serif;
+  @apply scroll-smooth ;
+}
+
+h1, h2, h3, h4, h5, h6, a {
+  scroll-margin-top: 7rem;
+}
+
+body {
+  display: block;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+footer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  padding: .5rem;
+  @apply bg-base-200;
+  z-index: 1020;
+  
+}
+header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: .5rem;
+  @apply bg-base-200 shadow-lg;
+  z-index: 1020;
+  
+  & > div {
+    width: 100%;
+    padding: 0 1.25rem;
+  }
+  & > div > p:first-of-type {
+    @apply text-5xl;
+  }
+  & > div p {
+    margin: 0;
+  }
+}
+
+div#content {
+  --main-height-diff: 11rem;
+  display: grid;
+  grid-template-areas: "sidebar main";
+  grid-template-columns: minmax(20%, 1fr) minmax(auto, calc(80% - 1.5rem));
+  gap: 2rem;
+  width: 100%;
+  padding: .5rem;
+
+  & > aside {
+    grid-area: sidebar;
+    padding-right: 1.5rem;
+
+    & > div {
+      position: sticky;
+      top: 7.5rem;
+      z-index: 2;
+      @apply bg-base-200 rounded-box shadow-lg p-2;
+      overflow: hidden;
+      max-height: calc(100vh - var(--main-height-diff));
+
+      & > nav {
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: calc(100vh - var(--main-height-diff) - 1rem);
+      }
+    }
+  }
+  & > main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: minmax(calc(80% - 1.5rem), auto) minmax(20%, 1fr);
+    gap: inherit;
+    grid-template-areas: "content toc";
+    padding-right: .5rem;
+    padding-left: .5rem;
+    /* margin-right: auto; */
+    /* margin-left: auto; */
+    
+    & > div {
+      grid-area: content;
+    }
+
+    & > aside {
+      grid-area: toc;
+      padding-right: .5rem;
+
+      & > div {
+        position: sticky;
+        top: 7.5rem;
+        right: 0.5rem;
+        z-index: 2;
+        @apply bg-base-200 rounded-box shadow-md p-1;
+        overflow: hidden;
+        max-height: calc(100vh - var(--main-height-diff));
+        
+        & > nav {
+          overflow-x: hidden;
+          overflow-y: auto;
+          max-height: calc(100vh - var(--main-height-diff) - 1rem);
+        }
+      }
+    }
+  }
+}
+
+

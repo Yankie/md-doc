@@ -1,9 +1,8 @@
-<nav>
+<nav id="site-nav">
     {%- set navPages = collections.allPathSorted | eleventyNavigation %}
     {%- macro renderNavListItem(entry) -%}
-    {# <!-- {{ entry | dump | safe }} --> #}
-    <li{% if entry.url == page.url %} class="active"{% endif %}{# data-nav-key="{{ entry.key }}" data-nav-parent="{{ entry.parent | d('top') }}"#}>
-        <a href="{{ entry.url }}">{{ entry.title }}</a>
+    <li{# data-nav-key="{{ entry.key }}" data-nav-parent="{{ entry.parent | d('top') }}"#}>
+        <a{% if entry.url == page.url %} class="active"{% endif %} href="{{ entry.url }}" >{{ entry.title }}</a>
         {%- if entry.children.length -%}
         <ul>
             {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
@@ -12,9 +11,7 @@
     </li>
     {%- endmacro %}
 
-    <ul>
+    <ul class="menu menu-sm">
     {%- for entry in navPages %}{{ renderNavListItem(entry) }}{% endfor -%}
     </ul>   
-
-    {#- {{ navPages | dump | safe }} #}
 </nav>

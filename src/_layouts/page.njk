@@ -7,28 +7,50 @@
   <header>
     {% include 'html-header.njk' %}
   </header>
-  <section>
+  <div id="content">
     <aside>
-      {% include 'html-nav.njk' %}
-    </aside>
-    {% if content | toc %}<main>{% endif %}
       <div>
-        <h1>{{ title }}</h1>
+        {% include 'html-nav.njk' %}
+      </div>
+    </aside>
+    <main>
+      <div class="prose prose-md max-w-none pt-10">
+        <div >
+          <h1>{{ title }}</h1>
+        </div>
         <hr>
         {{ content | safe }}
       </div>
-      {% if content | toc %}<aside>
-        <p>Page contents:</p>
-          {{ content | toc | safe }}
-      </aside>{% endif %}
+      {%- if content | toc %}
+      <aside id="page-nav">
+        <div>
+        {{ content | toc(wrapper='nav',wrapperClass='',headingClass='menu-title',headingText='Содержание',heading=true,headingClass='menu-title',headingLevel='p',tags=['h2', 'h3', 'h4'],listType='ul',listClass='menu menu-xs',listItemClass='nav-item',listItemAnchorClass='nav-link') | safe }}
+        </div>
+      </aside>
+      {%- endif %}
     </main>
-  </section>
+  </div>
   <footer>
     {% include 'html-footer.njk' %}
   </footer>
+  <!-- https://github.com/mermaid-js/mermaid -->
   <script src="/assets/js/mermaid.min.js"></script>
   <script>
     mermaid.initialize({startOnLoad: true});
+  </script>
+  <!-- https://github.com/kimyvgy/simple-scrollspy -->
+  <script src="/assets/js/scrollspy.min.js"></script>
+  <script>
+    window.onload = function () {
+      scrollSpy('#page-nav', {
+        sectionSelector: 'div#content>main>div.prose section',  // Query selector to your sections
+        targetSelector: 'nav ul li.nav-item a.nav-link', // Query selector to your elements that will be added `active` class
+        activeClass: "active",
+        hrefAttribute: "href",
+        //onActive: function (e,t) { console.log(e,t) },
+        offset: 150                 // Menu item will active before scroll to a matched section 100px
+      });
+    }
   </script>
 </body>
 </html>

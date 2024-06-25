@@ -1,6 +1,6 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 // const eleventyFilterRelativeUrl = require('eleventy-filter-relative-url');
-const eleventyPluginTOC = require('eleventy-plugin-toc');
+const eleventyPluginTOC = require('@thedigitalman/eleventy-plugin-toc-a11y');
 const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 const posthtml = require('posthtml');
 const urls = require('posthtml-urls');
@@ -22,7 +22,13 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("eleventyNavigationContent", findNavigationEntriesWithContent);
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(eleventyPluginTOC)
+  eleventyConfig.addPlugin(eleventyPluginTOC, {
+    tags: ['h2', 'h3', 'h4'],
+    wrapper: 'nav',
+    wrapperClass: '',
+    heading: false,
+    listType: 'ul',
+  })
 
   eleventyConfig.addCollection("allPathSorted", function (collectionApi) {
     return collectionApi.getAll()
@@ -48,6 +54,8 @@ module.exports = function(eleventyConfig) {
   });
   // markdownLibrary.disable(['replacements']); //: {'replace_scoped'}
 
+  markdownLibrary.use(require("markdown-it-header-sections"));
+
   /* Markdown Plugins */
   markdownLibrary.use(require("markdown-it-anchor"), {
     level: [1, 2, 3, 4],
@@ -62,15 +70,26 @@ module.exports = function(eleventyConfig) {
   });
   markdownLibrary.use(require("@iktakahiro/markdown-it-katex"));
   markdownLibrary.use(require("markdown-it-admon"));
-  markdownLibrary.use(require("markdown-it-attrs"));
-  markdownLibrary.use(require("markdown-it-center-text"));
-  markdownLibrary.use(require("markdown-it-emoji").full);
+  markdownLibrary.use(require("markdown-it-kbd-better"), {
+    presets: [{
+        name: 'icons'
+    }]
+});
+  markdownLibrary.use(require("markdown-it-attrs"), { allowedAttributes: ['id', 'class'] });
+  // markdownLibrary.use(require("markdown-it-center-text"));
+  // markdownLibrary.use(require("markdown-it-emoji").full);
   markdownLibrary.use(require("markdown-it-footnote"));
   markdownLibrary.use(require("markdown-it-sub"));
   markdownLibrary.use(require("markdown-it-sup"));
   markdownLibrary.use(require("markdown-it-task-lists"));
   markdownLibrary.use(require("markdown-it-textual-uml"));
-  markdownLibrary.use(require("markdown-it-toc-done-right"), { level: [1,2,3,4] });
+  markdownLibrary.use(require("markdown-it-smartarrows"));
+  // markdownLibrary.use(require("markdown-it-toc-done-right"), {
+  //   containerClass: "TOC",
+  //   level: [1,2,3,4],
+  //   listClass:  "menu",
+  //   listType: "ul"
+  // });
   markdownLibrary.use(require("markdown-it-linkify-images"), {
     imgClass: "p-4",
   });
