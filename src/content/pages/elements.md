@@ -86,10 +86,88 @@ H~2~O is a liquid.
 
 ## Task lists
 
-Pandoc supports task lists, using the syntax of GitHub-Flavored Markdown.
+MERI Doc supports task lists, using the syntax of GitHub-Flavored Markdown.
 
 - [ ] an unchecked task list item
 - [x] checked item
+
+## Definition lists
+
+MERI doc supports definition lists, using the syntax of PHP Markdown Extra with some extensions.2
+
+```md
+Term 1
+
+:   Definition 1
+
+Term 2 with *inline markup*
+
+:   Definition 2
+
+        { some code, part of Definition 2 }
+
+    Third paragraph of definition 2.
+```
+
+<figure class="example"><div>
+
+Term 1
+
+:   Definition 1
+
+Term 2 with *inline markup*
+
+:   Definition 2
+
+        { some code, part of Definition 2 }
+
+    Third paragraph of definition 2.
+
+</div></figure>
+
+Each term must fit on one line, which may optionally be followed by a blank line, and must be followed by one or more definitions. A definition begins with a colon or tilde, which may be indented one or two spaces.
+
+A term may have multiple definitions, and each definition may consist of one or more block elements (paragraph, code block, list, etc.), each indented four spaces or one tab stop. The body of the definition (not including the first line) should be indented four spaces. However, as with other Markdown lists, you can “lazily” omit indentation except at the beginning of a paragraph or other block element:
+
+```md
+Term 1
+
+:   Definition
+with lazy continuation.
+
+    Second paragraph of the definition.
+If you leave space before the definition (as in the example above), the text of the definition will be treated as a paragraph. In some output formats, this will mean greater spacing between term/definition pairs. For a more compact definition list, omit the space before the definition:
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+```
+
+<figure class="example"><div>
+
+Term 1
+
+:   Definition
+with lazy continuation.
+
+    Second paragraph of the definition.
+If you leave space before the definition (as in the example above), the text of the definition will be treated as a paragraph. In some output formats, this will mean greater spacing between term/definition pairs. For a more compact definition list, omit the space before the definition:
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+</div></figure>
+
+!!!note ПРИМЕЧАНИЕ
+    Note that space between items in a definition list is required. (A variant that loosens this requirement, but disallows “lazy” hard wrapping, can be activated with the compact_definition_lists extension.)
+
 
 
 ## Attributes

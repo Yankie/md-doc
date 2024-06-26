@@ -81,6 +81,7 @@ module.exports = function(eleventyConfig) {
   markdownLibrary.use(require("markdown-it-footnote"));
   markdownLibrary.use(require("markdown-it-sub"));
   markdownLibrary.use(require("markdown-it-sup"));
+  markdownLibrary.use(require("markdown-it-deflist"));
   markdownLibrary.use(require("markdown-it-task-lists"));
   markdownLibrary.use(require("markdown-it-textual-uml"));
   markdownLibrary.use(require("markdown-it-smartarrows"));

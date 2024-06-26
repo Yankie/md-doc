@@ -4,8 +4,9 @@ title: Диаграммы Mermaid
 
 ## Flowchart
 
+[Documentation](https://mermaid.js.org/syntax/flowchart.html)
 
-```
+```md
 flowchart LR
 
 A[Hard] -->|Text| B(Round)
@@ -13,6 +14,8 @@ B --> C{Decision}
 C -->|One| D[Result 1]
 C -->|Two| E[Result 2]
 ```
+
+<figure class="example"><div>
 
 ```mermaid
 flowchart LR
@@ -22,10 +25,14 @@ B --> C{Decision}
 C -->|One| D[Result 1]
 C -->|Two| E[Result 2]
 ```
+</div></figure>
 
-## Sequence diagram
+## Sequence Diagram
 
-```
+[Documentation](https://mermaid.js.org/syntax/sequenceDiagram.html)
+
+
+```md
 sequenceDiagram
 Alice->>John: Hello John, how are you?
 loop HealthCheck
@@ -37,6 +44,8 @@ John->>Bob: How about you?
 Bob-->>John: Jolly good!
 ```
 
+<figure class="example"><div>
+
 ```mermaid
 sequenceDiagram
 Alice->>John: Hello John, how are you?
@@ -48,10 +57,142 @@ John-->>Alice: Great!
 John->>Bob: How about you?
 Bob-->>John: Jolly good!
 ```
+</div></figure>
 
-## Gantt chart
+## Class Diagram
+
+[Documentation](https://mermaid.js.org/syntax/classDiagram.html)
+
+```md
+---
+title: Animal example
+---
+classDiagram
+    note "From Duck till Zebra"
+    Animal <|-- Duck
+    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
+    Animal <|-- Fish
+    Animal <|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+        +String beakColor
+        +swim()
+        +quack()
+    }
+    class Fish{
+        -int sizeInFeet
+        -canEat()
+    }
+    class Zebra{
+        +bool is_wild
+        +run()
+    }
+```
+
+<figure class="example"><div>
+
+```mermaid
+---
+title: Animal example
+---
+classDiagram
+    note "From Duck till Zebra"
+    Animal <|-- Duck
+    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
+    Animal <|-- Fish
+    Animal <|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+        +String beakColor
+        +swim()
+        +quack()
+    }
+    class Fish{
+        -int sizeInFeet
+        -canEat()
+    }
+    class Zebra{
+        +bool is_wild
+        +run()
+    }
+```
+</div></figure>
+
+## State Diagram
+
+[Documentation](https://mermaid.js.org/syntax/stateDiagram.html)
+
+
+```md
+stateDiagram-v2
+[*] --> Still
+Still --> [*]
+Still --> Moving
+Moving --> Still
+Moving --> Crash
+Crash --> [*]
+```
+
+<figure class="example"><div>
+
+```mermaid
+stateDiagram-v2
+[*] --> Still
+Still --> [*]
+Still --> Moving
+Moving --> Still
+Moving --> Crash
+Crash --> [*]
+```
+</div></figure>
+
+## Entity Relationship Diagram
+
+[Documentation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
+
+## User Journey
+
+[Documentation](https://mermaid.js.org/syntax/userJourney.html)
+
 
 ```
+  journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 3: Me
+```
+
+<figure class="example"><div>
+
+```mermaid
+  journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 3: Me
+```
+</div></figure>
+
+## Gantt
+
+[Documentation](https://mermaid.js.org/syntax/gantt.html)
+
+```md
 gantt
     section Section
     Completed :done,    des1, 2014-01-06,2014-01-08
@@ -62,6 +203,8 @@ gantt
     Parallel 4   :         des6, after des4, 1d
 ```
 
+<figure class="example"><div>
+
 ```mermaid
 gantt
     section Section
@@ -72,93 +215,11 @@ gantt
     Parallel 3   :         des5, after des3, 1d
     Parallel 4   :         des6, after des4, 1d
 ```
+</div></figure>
 
-## Class diagram
+### Bar chart (using gantt chart)
 
-```
-classDiagram
-Class01 <|-- AveryLongClass : Cool
-<<Interface>> Class01
-Class09 --> C2 : Where am I?
-Class09 --* C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-class Class10 {
-  <<service>>
-  int id
-  size()
-}
-```
-
-```mermaid
-classDiagram
-Class01 <|-- AveryLongClass : Cool
-<<Interface>> Class01
-Class09 --> C2 : Where am I?
-Class09 --* C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-class Class10 {
-  <<service>>
-  int id
-  size()
-}
-```
-
-## State diagram
-
-```
-stateDiagram-v2
-[*] --> Still
-Still --> [*]
-Still --> Moving
-Moving --> Still
-Moving --> Crash
-Crash --> [*]
-```
-
-```mermaid
-stateDiagram-v2
-[*] --> Still
-Still --> [*]
-Still --> Moving
-Moving --> Still
-Moving --> Crash
-Crash --> [*]
-```
-
-## Pie chart
-
-```
-pie
-"Dogs" : 386
-"Cats" : 85.9
-"Rats" : 15
-```
-
-```mermaid
-pie
-"Dogs" : 386
-"Cats" : 85.9
-"Rats" : 15
-```
-
-
-## Git graph
-
-
-
-## Bar chart (using gantt chart)
-
-```
+```md
 gantt
     title Git Issues - days since last update
     dateFormat  X
@@ -176,6 +237,8 @@ gantt
     5    : 0, 5
 ```
 
+<figure class="example"><div>
+
 ```mermaid
 gantt
     title Git Issues - days since last update
@@ -193,34 +256,144 @@ gantt
     section Issue1300
     5    : 0, 5
 ```
+</div></figure>
 
-## User Journey diagram
+## Pie Chart
 
+[Documentation](https://mermaid.js.org/syntax/pie.html)
+
+
+```md
+pie
+"Dogs" : 386
+"Cats" : 85.9
+"Rats" : 15
 ```
-  journey
-    title My working day
-    section Go to work
-      Make tea: 5: Me
-      Go upstairs: 3: Me
-      Do work: 1: Me, Cat
-    section Go home
-      Go downstairs: 5: Me
-      Sit down: 3: Me
-```
+
+<figure class="example"><div>
 
 ```mermaid
-  journey
-    title My working day
-    section Go to work
-      Make tea: 5: Me
-      Go upstairs: 3: Me
-      Do work: 1: Me, Cat
-    section Go home
-      Go downstairs: 5: Me
-      Sit down: 3: Me
+pie
+"Dogs" : 386
+"Cats" : 85.9
+"Rats" : 15
+```
+</div></figure>
+
+## Quadrant Chart
+
+[Documentation](https://mermaid.js.org/syntax/quadrantChart.html)
+
+
+```
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    Campaign A: [0.3, 0.6]
+    Campaign B: [0.45, 0.23]
+    Campaign C: [0.57, 0.69]
+    Campaign D: [0.78, 0.34]
+    Campaign E: [0.40, 0.34]
+    Campaign F: [0.35, 0.78]
 ```
 
-## C4 diagram
+<figure class="example"><div>
+
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    Campaign A: [0.3, 0.6]
+    Campaign B: [0.45, 0.23]
+    Campaign C: [0.57, 0.69]
+    Campaign D: [0.78, 0.34]
+    Campaign E: [0.40, 0.34]
+    Campaign F: [0.35, 0.78]
+```
+</div></figure>
+
+## Requirement Diagram
+
+[Documentation](https://mermaid.js.org/syntax/requirementDiagram.html)
+
+## Gitgraph (Git) Diagram
+
+[Documentation](https://mermaid.js.org/syntax/gitgraph.html)
+
+
+```md
+---
+title: Example Git diagram
+---
+gitGraph
+    commit id: "1"
+    commit id: "2"
+    branch nice_feature
+    checkout nice_feature
+    commit id: "3"
+    checkout main
+    commit id: "4"
+    checkout nice_feature
+    branch very_nice_feature
+    checkout very_nice_feature
+    commit id: "5"
+    checkout main
+    commit id: "6"
+    checkout nice_feature
+    commit id: "7"
+    checkout main
+    merge nice_feature id: "customID" tag: "customTag" type: REVERSE
+    checkout very_nice_feature
+    commit id: "8"
+    checkout main
+    commit id: "9"
+```
+
+<figure class="example"><div>
+
+```mermaid
+---
+title: Example Git diagram
+---
+gitGraph
+    commit id: "1"
+    commit id: "2"
+    branch nice_feature
+    checkout nice_feature
+    commit id: "3"
+    checkout main
+    commit id: "4"
+    checkout nice_feature
+    branch very_nice_feature
+    checkout very_nice_feature
+    commit id: "5"
+    checkout main
+    commit id: "6"
+    checkout nice_feature
+    commit id: "7"
+    checkout main
+    merge nice_feature id: "customID" tag: "customTag" type: REVERSE
+    checkout very_nice_feature
+    commit id: "8"
+    checkout main
+    commit id: "9"
+```
+</div></figure>
+
+## C4 Diagram ⚠️
+
+[Documentation](https://mermaid.js.org/syntax/c4.html)
+
 
 ```
 C4Context
@@ -257,6 +430,8 @@ Rel(SystemAA, SystemC, "Sends e-mails", "SMTP")
 Rel(SystemC, customerA, "Sends e-mails to")
 ```
 
+<figure class="example"><div>
+
 ```mermaid
 C4Context
 title System Context diagram for Internet Banking System
@@ -291,7 +466,184 @@ BiRel(SystemAA, SystemE, "Uses")
 Rel(SystemAA, SystemC, "Sends e-mails", "SMTP")
 Rel(SystemC, customerA, "Sends e-mails to")
 ```
+</div></figure>
 
+## Mindmaps
+
+[Documentation](https://mermaid.js.org/syntax/mindmap.html)
+
+
+```md
+mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectiveness<br/>and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+```
+
+<figure class="example"><div>
+
+```mermaid
+mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectiveness<br/>and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+```
+</div></figure>
+
+## Timeline
+
+[Documentation](https://mermaid.js.org/syntax/timeline.html)
+
+
+```md
+timeline
+    title Timeline of Industrial Revolution
+    section 17th-20th century
+        Industry 1.0 : Machinery, Water power, Steam <br>power
+        Industry 2.0 : Electricity, Internal combustion engine, Mass production
+        Industry 3.0 : Electronics, Computers, Automation
+    section 21st century
+        Industry 4.0 : Internet, Robotics, Internet of Things
+        Industry 5.0 : Artificial intelligence, Big data, 3D printing
+```
+<figure class="example"><div>
+
+```mermaid
+timeline
+    title Timeline of Industrial Revolution
+    section 17th-20th century
+        Industry 1.0 : Machinery, Water power, Steam <br>power
+        Industry 2.0 : Electricity, Internal combustion engine, Mass production
+        Industry 3.0 : Electronics, Computers, Automation
+    section 21st century
+        Industry 4.0 : Internet, Robotics, Internet of Things
+        Industry 5.0 : Artificial intelligence, Big data, 3D printing
+```
+</div></figure>
+
+## Zenuml
+
+[Documentation](https://mermaid.js.org/syntax/zenuml.html)
+
+## Sankey
+
+[Documentation](https://mermaid.js.org/syntax/sankey.html)
+
+## XYChart 🔥
+
+[Documentation](https://mermaid.js.org/syntax/xyChart.html)
+
+
+```md
+---
+config:
+    xyChart:
+        width: 900
+        height: 600
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+xychart-beta
+    title "Sales Revenue"
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    y-axis "Revenue (in $)" 4000 --> 11000
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+```
+
+<figure class="example"><div>
+
+```mermaid
+---
+config:
+    xyChart:
+        width: 900
+        height: 600
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+xychart-beta
+    title "Sales Revenue"
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    y-axis "Revenue (in $)" 4000 --> 11000
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+```
+</div></figure>
+
+## Block Diagram 🔥
+
+[Documentation](https://mermaid.js.org/syntax/block.html)
+
+
+```md
+block-beta
+columns 1
+  db(("DB"))
+  blockArrowId6<["&nbsp;&nbsp;&nbsp;"]>(down)
+  block:ID
+    A
+    B["A wide one in the middle"]
+    C
+  end
+  space
+  D
+  ID --> D
+  C --> D
+  style B fill:#969,stroke:#333,stroke-width:4px
+```
+
+<figure class="example"><div>
+
+```mermaid
+block-beta
+columns 1
+  db(("DB"))
+  blockArrowId6<["&nbsp;&nbsp;&nbsp;"]>(down)
+  block:ID
+    A
+    B["A wide one in the middle"]
+    C
+  end
+  space
+  D
+  ID --> D
+  C --> D
+  style B fill:#969,stroke:#333,stroke-width:4px
+```
+</div></figure>
+
+## Other Examples</p>
+
+[Documentation](https://mermaid.js.org/syntax/examples.html)
 
 ## TODO
 
