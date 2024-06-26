@@ -32,37 +32,39 @@ footer {
   justify-content: center;
   align-content: center;
   width: 100%;
-  padding: .5rem;
+  /* padding: .5rem; */
   @apply bg-base-200;
   z-index: 1020;
   
 }
 header {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: center;
   position: sticky;
   top: 0;
   width: 100%;
-  padding: .5rem;
-  @apply bg-base-200 shadow-lg;
+  /* padding: .5rem; */
+  @apply bg-base-200 shadow-xl;
   z-index: 1020;
-  
-  & > div {
-    width: 100%;
-    padding: 0 1.25rem;
-  }
-  & > div > p:first-of-type {
-    @apply text-5xl;
-  }
-  & > div p {
-    margin: 0;
+
+  .navbar {
+    display: grid;
+    grid-template-areas: "brand title";
+    grid-template-columns: minmax(20%, 1fr) minmax(auto, calc(80% - 1.5rem));
+    gap: 2rem;
+    & > div.brand {
+      grid-area: brand;
+    }
+    & > div + div {
+      grid-area: title;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: start;
+    }
   }
 }
 
 div#content {
-  --main-height-diff: 11rem;
+  --main-header-height: 5rem;
+  --main-footer-height: 3.25rem;
   display: grid;
   grid-template-areas: "sidebar main";
   grid-template-columns: minmax(20%, 1fr) minmax(auto, calc(80% - 1.5rem));
@@ -73,19 +75,20 @@ div#content {
   & > aside {
     grid-area: sidebar;
     padding-right: 1.5rem;
+    z-index: 1002;
 
     & > div {
       position: sticky;
-      top: 7.5rem;
+      top: calc(var(--main-header-height) + 1rem);
       z-index: 2;
       @apply bg-base-200 rounded-box shadow-lg p-2;
       overflow: hidden;
-      max-height: calc(100vh - var(--main-height-diff));
+      max-height: calc(100vh - var(--main-header-height) - var(--main-footer-height) - 2rem);
 
       & > nav {
         overflow-x: hidden;
         overflow-y: auto;
-        max-height: calc(100vh - var(--main-height-diff) - 1rem);
+        max-height: calc(100vh - var(--main-header-height) - var(--main-footer-height) - 3rem);
       }
     }
   }
@@ -107,20 +110,20 @@ div#content {
     & > aside {
       grid-area: toc;
       padding-right: .5rem;
+      z-index: 1002;
 
       & > div {
         position: sticky;
-        top: 7.5rem;
+        top: calc(var(--main-header-height) + 1rem);
         right: 0.5rem;
-        z-index: 2;
         @apply bg-base-200 rounded-box shadow-md p-1;
         overflow: hidden;
-        max-height: calc(100vh - var(--main-height-diff));
+        max-height: calc(100vh - var(--main-header-height) - var(--main-footer-height) - 1.5rem);
         
         & > nav {
           overflow-x: hidden;
           overflow-y: auto;
-          max-height: calc(100vh - var(--main-height-diff) - 1rem);
+          max-height: calc(100vh - var(--main-header-height) - var(--main-footer-height) - 2.5rem);
         }
       }
     }
