@@ -30,6 +30,7 @@ pre {
     position: relative;
 }
  pre.shiki {
+    @apply font-mono;
     overflow-x: auto;
 }
  pre.shiki:hover .dim {
@@ -49,7 +50,7 @@ pre {
  pre.shiki div.line {
      min-height: 1rem;
 }
-pre.shiki {
+pre.shiki:not(.codeblock-no-line-numbers) {
     counter-reset: codeblock-line;
 
     .line {

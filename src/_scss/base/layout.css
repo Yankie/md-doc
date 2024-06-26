@@ -1,10 +1,22 @@
 
 html {
-  font-family: PT Astra Sans, sans-serif;
   @apply scroll-smooth ;
 }
 
-h1, h2, h3, h4, h5, h6, a {
+h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+}
+
+.prose {
+  @apply font-body;
+}
+
+header, footer, aside, form {
+  @apply font-ui;
+}
+
+
+h1, h2, h3, h4, h5, h6, a, section {
   scroll-margin-top: 7rem;
 }
 

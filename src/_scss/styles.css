@@ -2,10 +2,11 @@
 
 @import 'base/layout.css';
 @import 'base/fonts.css';
-@import 'base/admonitions.css';
 
 @import "tailwindcss/components";
-@import "shikijs.css";
+@import "vendor/shikijs.css";
+@import "vendor/katex.min.css";
+@import 'vendor/admonitions.css';
 @import "custom-styles.css";
 
 @import "tailwindcss/utilities";
