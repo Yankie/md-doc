@@ -7,11 +7,10 @@ title: Формулы с kaTeX
 
 Surround your LaTeX with a single $ on each side for inline rendering. 
 
-```md
-
+```latex
 Example: $\sqrt{3x-1}+(1+x)^2$
-
 ```
+
 <figure class="example"><div>
 
 Example: $\sqrt{3x-1}+(1+x)^2$
@@ -22,8 +21,7 @@ Example: $\sqrt{3x-1}+(1+x)^2$
 Use two ($$) for block rendering. This mode uses bigger symbols and centers the result.
 
 
-```md
-
+```latex
 Example: 
 
 $$\begin{array}{c}
@@ -36,8 +34,8 @@ $$\begin{array}{c}
 \nabla \cdot \vec{\mathbf{B}} & = 0
 
 \end{array}$$
-
 ```
+
 <figure class="example"><div>
 
 Example:

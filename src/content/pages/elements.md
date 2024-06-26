@@ -7,6 +7,13 @@ description: Элементы которые можно использовать
 
 Поэтому в нашей системе рендеринга документации будет использоваться синтаксис, описаный в этом подразделе.
 
+## Шрифты
+
+Используем шрифты фирмы Паратайп
+- PT Astra Sans (https://www.paratype.ru/fonts/pt/pt-astra-sans)
+- PT Astra Serif (https://www.paratype.ru/fonts/pt/pt-astra-serif)
+- PT Mono (https://www.paratype.ru/fonts/pt/pt-mono)
+- PT Root UI (https://www.paratype.ru/fonts/pt/pt-root-ui)
 
 ## Внутренние ссылки {id=internalLink123}
 

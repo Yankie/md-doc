@@ -6,7 +6,8 @@ title: Диаграммы Mermaid
 
 [Documentation](https://mermaid.js.org/syntax/flowchart.html)
 
-```md
+````md
+```mermaid
 flowchart LR
 
 A[Hard] -->|Text| B(Round)
@@ -14,6 +15,8 @@ B --> C{Decision}
 C -->|One| D[Result 1]
 C -->|Two| E[Result 2]
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -26,13 +29,15 @@ C -->|One| D[Result 1]
 C -->|Two| E[Result 2]
 ```
 </div></figure>
+
 
 ## Sequence Diagram
 
 [Documentation](https://mermaid.js.org/syntax/sequenceDiagram.html)
 
 
-```md
+````md
+```mermaid
 sequenceDiagram
 Alice->>John: Hello John, how are you?
 loop HealthCheck
@@ -43,6 +48,8 @@ John-->>Alice: Great!
 John->>Bob: How about you?
 Bob-->>John: Jolly good!
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -58,12 +65,14 @@ John->>Bob: How about you?
 Bob-->>John: Jolly good!
 ```
 </div></figure>
+
 
 ## Class Diagram
 
 [Documentation](https://mermaid.js.org/syntax/classDiagram.html)
 
-```md
+````md
+```mermaid
 ---
 title: Animal example
 ---
@@ -91,6 +100,8 @@ classDiagram
         +run()
     }
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -123,13 +134,15 @@ classDiagram
     }
 ```
 </div></figure>
+
 
 ## State Diagram
 
 [Documentation](https://mermaid.js.org/syntax/stateDiagram.html)
 
 
-```md
+````md
+```mermaid
 stateDiagram-v2
 [*] --> Still
 Still --> [*]
@@ -138,6 +151,8 @@ Moving --> Still
 Moving --> Crash
 Crash --> [*]
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -151,6 +166,7 @@ Moving --> Crash
 Crash --> [*]
 ```
 </div></figure>
+
 
 ## Entity Relationship Diagram
 
@@ -162,6 +178,8 @@ Crash --> [*]
 
 
 ```
+````
+
   journey
     title My working day
     section Go to work
@@ -172,6 +190,8 @@ Crash --> [*]
       Go downstairs: 5: Me
       Sit down: 3: Me
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -187,12 +207,14 @@ Crash --> [*]
       Sit down: 3: Me
 ```
 </div></figure>
+
 
 ## Gantt
 
 [Documentation](https://mermaid.js.org/syntax/gantt.html)
 
-```md
+````md
+```mermaid
 gantt
     section Section
     Completed :done,    des1, 2014-01-06,2014-01-08
@@ -202,6 +224,8 @@ gantt
     Parallel 3   :         des5, after des3, 1d
     Parallel 4   :         des6, after des4, 1d
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -216,10 +240,12 @@ gantt
     Parallel 4   :         des6, after des4, 1d
 ```
 </div></figure>
+
 
 ### Bar chart (using gantt chart)
 
-```md
+````md
+```mermaid
 gantt
     title Git Issues - days since last update
     dateFormat  X
@@ -236,6 +262,8 @@ gantt
     section Issue1300
     5    : 0, 5
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -257,18 +285,22 @@ gantt
     5    : 0, 5
 ```
 </div></figure>
+
 
 ## Pie Chart
 
 [Documentation](https://mermaid.js.org/syntax/pie.html)
 
 
-```md
+````md
+```mermaid
 pie
 "Dogs" : 386
 "Cats" : 85.9
 "Rats" : 15
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -279,6 +311,7 @@ pie
 "Rats" : 15
 ```
 </div></figure>
+
 
 ## Quadrant Chart
 
@@ -286,6 +319,8 @@ pie
 
 
 ```
+````
+
 quadrantChart
     title Reach and engagement of campaigns
     x-axis Low Reach --> High Reach
@@ -301,6 +336,8 @@ quadrantChart
     Campaign E: [0.40, 0.34]
     Campaign F: [0.35, 0.78]
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -321,6 +358,7 @@ quadrantChart
     Campaign F: [0.35, 0.78]
 ```
 </div></figure>
+
 
 ## Requirement Diagram
 
@@ -331,7 +369,8 @@ quadrantChart
 [Documentation](https://mermaid.js.org/syntax/gitgraph.html)
 
 
-```md
+````md
+```mermaid
 ---
 title: Example Git diagram
 ---
@@ -358,6 +397,8 @@ gitGraph
     checkout main
     commit id: "9"
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -389,13 +430,16 @@ gitGraph
     commit id: "9"
 ```
 </div></figure>
+
 
 ## C4 Diagram ⚠️
 
 [Documentation](https://mermaid.js.org/syntax/c4.html)
 
 
-```
+````md
+```mermaid
+
 C4Context
 title System Context diagram for Internet Banking System
 
@@ -429,6 +473,7 @@ BiRel(SystemAA, SystemE, "Uses")
 Rel(SystemAA, SystemC, "Sends e-mails", "SMTP")
 Rel(SystemC, customerA, "Sends e-mails to")
 ```
+````
 
 <figure class="example"><div>
 
@@ -467,13 +512,15 @@ Rel(SystemAA, SystemC, "Sends e-mails", "SMTP")
 Rel(SystemC, customerA, "Sends e-mails to")
 ```
 </div></figure>
+
 
 ## Mindmaps
 
 [Documentation](https://mermaid.js.org/syntax/mindmap.html)
 
 
-```md
+````md
+```mermaid
 mindmap
   root((mindmap))
     Origins
@@ -492,6 +539,8 @@ mindmap
       Pen and paper
       Mermaid
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -515,13 +564,15 @@ mindmap
       Mermaid
 ```
 </div></figure>
+
 
 ## Timeline
 
 [Documentation](https://mermaid.js.org/syntax/timeline.html)
 
 
-```md
+````md
+```mermaid
 timeline
     title Timeline of Industrial Revolution
     section 17th-20th century
@@ -532,6 +583,8 @@ timeline
         Industry 4.0 : Internet, Robotics, Internet of Things
         Industry 5.0 : Artificial intelligence, Big data, 3D printing
 ```
+````
+
 <figure class="example"><div>
 
 ```mermaid
@@ -546,6 +599,7 @@ timeline
         Industry 5.0 : Artificial intelligence, Big data, 3D printing
 ```
 </div></figure>
+
 
 ## Zenuml
 
@@ -560,7 +614,8 @@ timeline
 [Documentation](https://mermaid.js.org/syntax/xyChart.html)
 
 
-```md
+````md
+```mermaid
 ---
 config:
     xyChart:
@@ -577,6 +632,8 @@ xychart-beta
     bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
     line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
 ```
+````
+
 
 <figure class="example"><div>
 
@@ -599,12 +656,14 @@ xychart-beta
 ```
 </div></figure>
 
+
 ## Block Diagram 🔥
 
 [Documentation](https://mermaid.js.org/syntax/block.html)
 
 
-```md
+````md
+```mermaid
 block-beta
 columns 1
   db(("DB"))
@@ -620,6 +679,7 @@ columns 1
   C --> D
   style B fill:#969,stroke:#333,stroke-width:4px
 ```
+````
 
 <figure class="example"><div>
 
@@ -639,6 +699,7 @@ columns 1
   C --> D
   style B fill:#969,stroke:#333,stroke-width:4px
 ```
+
 </div></figure>
 
 ## Other Examples</p>
