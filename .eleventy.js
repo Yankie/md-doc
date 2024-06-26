@@ -1,3 +1,4 @@
+const shikiTwoslash = require("eleventy-plugin-shiki-twoslash")
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 // const eleventyFilterRelativeUrl = require('eleventy-filter-relative-url');
 const eleventyPluginTOC = require('@thedigitalman/eleventy-plugin-toc-a11y');
@@ -21,6 +22,7 @@ module.exports = function(eleventyConfig) {
   // eleventyConfig.addFilter('url', eleventyFilterRelativeUrl);
 	eleventyConfig.addFilter("eleventyNavigationContent", findNavigationEntriesWithContent);
 
+  eleventyConfig.addPlugin(shikiTwoslash, { theme: "monokai" })
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(eleventyPluginTOC, {
     tags: ['h2', 'h3', 'h4'],
@@ -143,6 +145,18 @@ module.exports = function(eleventyConfig) {
       // ndash: false
     }
   );
+  // =========================================
+  // Trying to integrate ShikiJS highlighter
+  // =========================================
+  // markdownLibrary.use(async function() {
+  //   (await import('@shikijs/markdown-it')).default({
+  //     themes: {
+  //       light: 'vitesse-light',
+  //       dark: 'vitesse-dark',
+  //     }
+  //   })
+  // });
+  // =========================================
 
   eleventyConfig.setLibrary("md", markdownLibrary);
   

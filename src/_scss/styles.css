@@ -5,6 +5,7 @@
 @import 'base/admonitions.css';
 
 @import "tailwindcss/components";
+@import "shikijs.css";
 @import "custom-styles.css";
 
 @import "tailwindcss/utilities";

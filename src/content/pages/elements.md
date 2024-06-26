@@ -15,9 +15,7 @@ description: Элементы которые можно использовать
 Например, заголовок `Продвинутые варианты` будет преобразован в `продвинутые-варианты`, и таким образом ссылка на этот заголовок в статье про таблицы будет выглядеть так:
 
 ```md
-
 [Продвинутые варианты разметки таблиц](./elements/table.md#продвинутые-варианты)
-
 ```
 
 <figure class="example"><div>
@@ -37,18 +35,15 @@ description: Элементы которые можно использовать
 Например, так задан якорь для заголовка этой статьи:
 
 ```md
-
 ## Внутренние ссылки {id=internalLinks123}
-
 ```
 
 Тогда можно сослаться на этот заголовок вот так:
 
 ```md
-
 [Ссылка на именованный якорь](#internalLink123)
-
 ```
+
 <figure class="example"><div>
 
 [Ссылка на именованный якорь](#internalLink123)
@@ -62,11 +57,9 @@ description: Элементы которые можно использовать
 Так, например,
 
 ```md
-
 H~2~O is a liquid.
 
 2^10^ is 1024.
-
 ```
 
 <figure class="example"><div>
@@ -88,8 +81,16 @@ H~2~O is a liquid.
 
 MERI Doc supports task lists, using the syntax of GitHub-Flavored Markdown.
 
+```md
 - [ ] an unchecked task list item
 - [x] checked item
+```
+
+<figure class="example"><div>
+
+- [ ] an unchecked task list item
+- [x] checked item
+</div></figure>
 
 ## Definition lists
 
@@ -174,18 +175,37 @@ Term 2
 
 * allowedAttributes: `id`, `class`
 
-!!!caution Caution
-    There's must be a [[space]] between `{` and `#` in case if `id` specification!
-
+!!!caution ВНИМАНИЕ
+    Между `{` и `#` должен быть [[space]] в случае, если необходимо задать `id`!
 ```md
 
-text { #ttt .ttt}
+<style>
+  .ttt {
+    text-decoration: underline;
+  }
+</style>
+
+Plain text 
+
+Underlined text with #ttt anchor { #ttt .ttt}
+
+Plain again
 
 ```
 
 <figure class="example"><div>
 
-text { #ttt .ttt}
+<style>
+  .ttt {
+    text-decoration: underline;
+  }
+</style>
+
+Plain text 
+
+Underlined text with #ttt anchor { #ttt .ttt}
+
+Plain again
 
 </div></figure>
 
@@ -196,9 +216,7 @@ Renders `[[x]]` as `<kbd>x</kbd>`.
 (`<kbd>` is the tag for keystrokes).
 
 ```md
-
 Press [[Ctrl]] + [[V]]
-
 ```
 
 <figure class="example"><div>
@@ -210,10 +228,6 @@ Press [[Ctrl]] + [[V]]
 
 
 ## TODO
-- code highlighting^
-  - https://www.npmjs.com/package/markdown-it-prism, https://prismjs.com/#basic-usage
-  - https://www.npmjs.com/package/markdown-it-code-section
-  - https://www.npmjs.com/package/markdown-it-code-block
 - investigate https://www.npmjs.com/package/markdown-it-auto-crosslinker
 - Clash with `--` ndash replacement rule (https://www.npmjs.com/package/markdown-it-small)
 - https://www.npmjs.com/package/markdown-it-emph
