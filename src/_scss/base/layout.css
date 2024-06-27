@@ -52,12 +52,16 @@ header {
     gap: 2rem;
     & > div.brand {
       grid-area: brand;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
-    & > div + div {
+    & > div.title {
       grid-area: title;
       display: inline-flex;
       flex-direction: column;
       align-items: start;
+      margin-left: .5rem;
     }
   }
 }
