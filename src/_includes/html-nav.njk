@@ -10,8 +10,12 @@
         {%- endif -%}
     </li>
     {%- endmacro %}
+    {% set index = navPages[0] %}
 
     <ul class="menu menu-sm">
-    {%- for entry in navPages %}{{ renderNavListItem(entry) }}{% endfor -%}
+        <li{# data-nav-key="{{ index.key }}" data-nav-parent="{{ index.parent | d('top') }}"#}>
+            <a{% if index.url == page.url %} class="active"{% endif %} href="{{ index.url }}" >{{ index.title }}</a>
+        </li>
+        {%- for entry in index.children %}{{ renderNavListItem(entry) }}{% endfor -%}
     </ul>   
 </nav>
