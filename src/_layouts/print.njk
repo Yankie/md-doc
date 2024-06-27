@@ -4,14 +4,33 @@ layout: outer-print.njk
 
 {%- set contentPages = collections.allPathSorted | eleventyNavigationContent %}
 {%- set contentLevel = 0 %}
-{%- macro renderContent(entry, level) -%}
-    <h1 id="{{ entry.title | slugify }}">{{ entry.title | safe }}</h1>
-    {# <small>{{ entry.url }} - {{ level }}</small> #}
-    <hr>
-    {{ entry.content | safe }} 
-    {%- if entry.children.length -%}
-    {%- for child in entry.children %}{{ renderContent(child,level+1) }}{% endfor -%}
-    {%- endif -%}
-{%- endmacro %}
 
-{%- for entry in contentPages %}{{ renderContent(entry, contentLevel) }}{% endfor -%}
+{%- macro renderContent(entry, level) -%}
+    <section>
+    {%- set sectionHtml %}
+    <h1 id="{{ entry.title | slugify }}" data-level="{{level}}">{{ entry.title | safe }}</h1>
+    <!-- <small>{{ entry.url }} - {{ level }}</small> -->
+    <hr>
+    {{ entry.content | safe }}
+    {% endset -%}
+
+    {{ sectionHtml | shiftHeaderLevel(level) | safe }} 
+
+    {%- if entry.children.length -%}
+    {%- for child in entry.children %}{{ renderContent(child,level+1)}}{% endfor -%}
+    {%- endif -%}
+    </section>
+{%- endmacro %}
+{% set indexPage = contentPages[0] %}
+
+<section>
+<h1 id="{{ indexPage.title | slugify }}" data-level="0">{{ indexPage.title | safe }}</h1>
+{# <small>{{ indexPage.url }} - {{ level }}</small> #}
+<hr>
+{{ indexPage.content | safe }}
+</section>
+<!-- <small>{{ indexPage.url }} - {{ contentLevel }}</small> -->
+
+{%- for entry in indexPage.children %}
+{{ renderContent(entry, contentLevel) }}
+{% endfor -%}

@@ -21,7 +21,7 @@ module.exports = function(eleventyConfig) {
   // Filter to make all paths relative
   // eleventyConfig.addFilter('url', eleventyFilterRelativeUrl);
 	eleventyConfig.addFilter("eleventyNavigationContent", findNavigationEntriesWithContent);
-
+  eleventyConfig.addFilter("shiftHeaderLevel", shiftHeaderLevel);
   eleventyConfig.addPlugin(shikiTwoslash, { theme: "monokai" })
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(eleventyPluginTOC, {
@@ -287,8 +287,8 @@ function findNavigationEntriesWithContent(nodes = [], key = "") {
 	}
 
 	return pages.sort(function(a, b) {
-		return (a.order || 0) - (b.order || 0);
-	}).map(function(entry) {
+  		return (a.order || 0) - (b.order || 0);
+  }).map(function(entry) {
 		if(!entry.title) {
 			entry.title = entry.key;
 		}
@@ -297,4 +297,20 @@ function findNavigationEntriesWithContent(nodes = [], key = "") {
 		}
 		return entry;
 	});
+}
+
+function shiftHeaderLevel(content = "", level = "0") {
+  return content.replace(/<(\/?)h([1-6])/gm, function(match, p1, p2) {
+    // console.log(match, level)
+    if(p2) { 
+      let nlevel = parseInt(p2) + parseInt(level);
+      if ((nlevel) < 7) {
+        return `<${p1}h${nlevel}`;
+      }
+      else {
+        return p1==='/' ? "</p":`<p data-header="header-${nlevel}"`
+      }
+    }
+    return match;
+  })
 }

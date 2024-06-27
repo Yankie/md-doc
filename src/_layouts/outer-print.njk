@@ -2,23 +2,35 @@
 <html lang="ru">
 <head>
   {% include 'html-head.njk' %}
+  <link rel="stylesheet" href="/assets/css/print.css">
+
 </head>
 <body>
   <!-- Title Page -->
-  <div>
-    <p>{{ site.title }}</p>
-    <p>{{ site.description }}</p>
-    <c>&copy {{ page.date.getFullYear() }}, {{ site.author }}
-  </div>
+  <section class="fullpage">
+    <div class="p-4" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="p-4" style="width: 33%;">
+        <img src="/assets/images/niime-logo.svg" style="width: 100%; height: auto;">
+      </div>
+      <div  class="p-4" style="display: flex; flex-direction: column; align-items: center;">
+        <p class="text-5xl">{{ site.title }}</p>
+        <p class="text-sm">{{ site.description }}</p>
+      </div>
+      <div class="p-4">
+        <p>&copy {{ page.date.getFullYear() }}, {{ site.author }}</p>
+      </div>
+    </div>
+  </section>
 
-  <article class="prose prose-md max-w-screen-lg">
+  <article id="book-internal" class="prose prose max-w-screen-lg">
+
     <!-- TOC -->
 
-    {% if content | toc({"tags": ["h1", "h2", "h3", "h4"]}) %}
-    <div id="toc">
-      {# <p>Contents:</p> #}
-      {{ content | toc({"tags": ["h1", "h2", "h3", "h4"],"wrapper":"div","wrapperClass":"print-toc"}) | safe }}
-    </div>  
+    {% if content | toc({"tags": ["h1", "h2"]}) %}
+    <section id="toc">
+      <h1>Содержание</h1>
+      {{ content | toc({"tags": ["h1", "h2", "h3", "h4", "h5", "h6"],"wrapper":"div","wrapperClass":"print-toc"}) | safe }}
+    </section>  
     {% endif %}
 
     <!-- Rest of content -->
