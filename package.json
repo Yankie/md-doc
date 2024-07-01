@@ -7,8 +7,8 @@
     "eleventy:serve": "eleventy --serve",
     "eleventy:build": "eleventy",
     "eleventy:debug": "DEBUG=* npx eleventy",
-    "tailwindcss:watch": "tailwindcss -i src/_scss/styles.css -o _site/assets/css/styles.css --watch --postcss",
-    "tailwindcss:build": "tailwindcss -i src/_scss/styles.css -o _site/assets/css/styles.css --postcss",
+    "tailwindcss:watch": "tailwindcss -i src/_assets/scss/styles.css -o _site/assets/css/styles.css --watch --postcss",
+    "tailwindcss:build": "tailwindcss -i src/_assets/scss/styles.css -o _site/assets/css/styles.css --postcss",
     "clean": "rm -rf _site",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p -l clean tailwindcss:watch eleventy:serve",
@@ -61,5 +61,11 @@
     "postcss-import": "^16.1.0",
     "sass": "^1.77.6",
     "tailwindcss": "^3.4.4"
-  }
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead"
+  ]
 }

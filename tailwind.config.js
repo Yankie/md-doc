@@ -14,15 +14,12 @@ module.exports = {
     },
     extend: {},
   },
-  darkMode: 'selector',
   daisyui: {
-    themes: ["light"],
+    themes: ["light", "dark"],
   },
   darkMode: ['class', '[data-theme="dark"]'],
   plugins: [
     require('@tailwindcss/typography'),
     require('daisyui'),
   ],
-  darkMode: 'selector',
 }
-

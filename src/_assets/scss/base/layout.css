@@ -47,7 +47,7 @@ header {
 
   .navbar {
     display: grid;
-    grid-template-areas: "brand title";
+    grid-template-areas: "brand title misc";
     grid-template-columns: minmax(20%, 1fr) minmax(auto, calc(80% - 1.5rem));
     gap: 2rem;
     & > div.brand {
@@ -63,6 +63,45 @@ header {
       align-items: start;
       margin-left: .5rem;
     }
+    & > div.misc {
+      grid-area: misc;
+      display: inline-flex;
+      align-items: end;
+      margin-left: .5rem;
+      & input ~ span.material-icons:before {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        /* font-size: 24px;  /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+      
+        /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased;
+        /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility;
+      
+        /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale;
+      
+        /* Support for IE. */
+        font-feature-settings: 'liga';
+      }
+      & input ~ span.swap-on:before,
+      [data-theme='dark'] & input ~ span.swap-off:before {
+        content: '\e518';
+      }
+      & input ~ span.swap-off:before, 
+      [data-theme='dark'] & input ~ span.swap-on:before {
+        content: '\e51c';
+      }
+    }
+
   }
 }
 

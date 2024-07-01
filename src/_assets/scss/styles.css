@@ -11,3 +11,7 @@
 
 @import "tailwindcss/utilities";
 /* @import "./custom-utilities.css"; */
+/* TODO
+* Consider https://github.com/csstools/postcss-advanced-variables or https://github.com/csstools/precss
+
+*/

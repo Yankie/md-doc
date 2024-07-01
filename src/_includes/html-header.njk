@@ -6,4 +6,26 @@
         <div class="text-2xl">{{ site.title }}</div>
         <div class="text-xs">{{ site.description }}</div>
     </div>
+    <div class="misc">
+        <label id="themeSwitch" class="swap swap-rotate">
+            <input type="checkbox" value="dark" class="theme-controller" />
+            <span class="swap-on  material-icons"></span>
+            <span class="swap-off material-icons"></span>
+        </label>
+        {# <label id="themeSwitch" class="swap swap-rotate">
+            <input type="checkbox" value="dark" class="theme-controller" />
+            <span class="swap-on  material-icons">&#xe518;</span>
+            <span class="swap-off material-icons">&#xe51c;</span>
+        </label> #}
+
+        {# <label id="themeSwitch" class="swap">
+            <input type="checkbox" />
+            <div class="swap-on">
+                <span data-set-theme="dark" class="material-symbols-outlined">&#xe518;</span>
+            </div>
+            <div class="swap-off">
+                <span data-set-theme="light" class="material-symbols-outlined">&#xe51c;</span>
+            </div>
+        </label> #}
+    </div>
 </div>
