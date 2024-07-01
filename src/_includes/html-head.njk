@@ -3,3 +3,25 @@
 <title>{{ title or site.title }}</title>
 <meta name="description" content="{{ description or site.description }}">
 <link rel="stylesheet" href="/assets/css/styles.css">
+<script>
+    // const themeSwitch = document.getElementById("themeSwitch").getElementsByTagName("input")[0];
+    // got user prefs set
+    const userTheme = localStorage.getItem("theme");
+    // console.log(userTheme)
+    if (userTheme !== null ){ 
+        document.documentElement.setAttribute("data-theme", userTheme)
+        // themeSwitch.checked = userTheme === "dark" ? true : false;
+    } else {
+        if (window.matchMedia) {
+            console.log(window.matchMedia)
+
+            if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+                document.documentElement.setAttribute("data-theme", "dark")
+                // themeSwitch.checked = true;
+            } else {
+                document.documentElement.setAttribute("data-theme", "light")
+                // themeSwitch.checked = false;
+            }
+        }
+    }
+</script>

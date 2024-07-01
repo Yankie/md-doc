@@ -708,6 +708,7 @@ columns 1
 
 ## TODO
 
-- study `npm i mermaid-isomorphic`
+- study `npm i mermaid-isomorphic` https://github.com/remcohaszing/mermaid-isomorphic
+- https://github.com/TomWright/mermaid-server 
 - study https://perryvw.github.io/mermaid-markdown-docs/#/
 - https://habr.com/ru/companies/X5Tech/articles/821687/

@@ -33,24 +33,6 @@
   <footer>
     {% include 'html-footer.njk' %}
   </footer>
-  <!-- https://github.com/mermaid-js/mermaid -->
-  <script src="/assets/js/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({startOnLoad: true});
-  </script>
-  <!-- https://github.com/kimyvgy/simple-scrollspy -->
-  <script src="/assets/js/scrollspy.min.js"></script>
-  <script>
-    window.onload = function () {
-      scrollSpy('#page-nav', {
-        sectionSelector: 'div#content>main>div.prose section',  // Query selector to your sections
-        targetSelector: 'nav ul li.nav-item a.nav-link', // Query selector to your elements that will be added `active` class
-        activeClass: "active",
-        hrefAttribute: "href",
-        //onActive: function (e,t) { console.log(e,t) },
-        offset: 150                 // Menu item will active before scroll to a matched section 100px
-      });
-    }
-  </script>
+  <script type="module" src="/assets/js/script.js"></script>
 </body>
 </html>

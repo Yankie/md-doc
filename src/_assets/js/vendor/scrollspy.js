@@ -152,3 +152,5 @@ function scrollSpy (el, options) {
 
     return scrollSpy;
 }
+
+export { scrollSpy }

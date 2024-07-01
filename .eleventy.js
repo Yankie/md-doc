@@ -11,16 +11,20 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
   eleventyConfig.addWatchTarget("./src/_assets/")
-  eleventyConfig.addPassthroughCopy({"./src/_assets/":"/assets"})
+  eleventyConfig.addPassthroughCopy({"./public/assets/":"/assets"})
   eleventyConfig.addWatchTarget("./src/content/media/")
   eleventyConfig.addPassthroughCopy({"./src/content/media/":"/media"})
+  eleventyConfig.addPassthroughCopy({"./src/_assets/js/":"/assets/js"})
 
   eleventyConfig.setBrowserSyncConfig({
     files: './_site/assets/css/**/*.css'
   });
+
+
   // Filter to make all paths relative
   // eleventyConfig.addFilter('url', eleventyFilterRelativeUrl);
-	eleventyConfig.addFilter("eleventyNavigationContent", findNavigationEntriesWithContent);
+
+  eleventyConfig.addFilter("eleventyNavigationContent", findNavigationEntriesWithContent);
   eleventyConfig.addFilter("shiftHeaderLevel", shiftHeaderLevel);
   eleventyConfig.addPlugin(shikiTwoslash, { theme: "monokai" })
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
