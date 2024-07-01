@@ -14,7 +14,7 @@ layout: outer-print.njk
     {{ entry.content | safe }}
     {% endset -%}
 
-    {{ sectionHtml | shiftHeaderLevel(level) | safe }} 
+    {{ sectionHtml | shiftHeaderLevel(level) | safe }}
 
     {%- if entry.children.length -%}
     {%- for child in entry.children %}{{ renderContent(child,level+1)}}{% endfor -%}

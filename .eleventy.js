@@ -102,7 +102,7 @@ module.exports = function(eleventyConfig) {
   });
   // https://github.com/markdown-it/markdown-it/pull/762/files
   let markdownItReplaceIt = require('markdown-it-replace-it');
-  
+
   markdownItReplaceIt.replacements.splice(0, markdownItReplaceIt.replacements.length);
   markdownItReplaceIt.replacements.push(
     {
