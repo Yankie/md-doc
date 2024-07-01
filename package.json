@@ -7,16 +7,16 @@
     "eleventy:serve": "eleventy --serve",
     "eleventy:build": "eleventy",
     "eleventy:debug": "DEBUG=* npx eleventy",
-    "sass:watch": "sass src/_scss/print.scss:_site/assets/css/print.css --watch --update --color",
-    "sass:build": "sass src/_scss/print.scss:_site/assets/css/print.css --no-source-map --style=compressed",
+    "print-sass:watch": "sass src/_assets/scss/print.scss:_site/assets/css/print.css --watch --update --color",
+    "print-sass:build": "sass src/_assets/scss/print.scss:_site/assets/css/print.css --no-source-map --style=compressed",
     "tailwindcss:watch": "tailwindcss -i src/_assets/scss/styles.css -o _site/assets/css/styles.css --watch --postcss",
     "tailwindcss:build": "tailwindcss -i src/_assets/scss/styles.css -o _site/assets/css/styles.css --postcss",
-    "tailwindcss-print:watch": "tailwindcss -i src/_scss/print.css -o _site/assets/css/print.css --watch --postcss",
-    "tailwindcss-print:build": "tailwindcss -i src/_scss/print.css -o _site/assets/css/print.css --postcss",
+    "tailwindcss-print:watch": "tailwindcss -i src/_assets/scss/print.css -o _site/assets/css/print.css --watch --postcss",
+    "tailwindcss-print:build": "tailwindcss -i src/_assets/scss/print.css -o _site/assets/css/print.css --postcss",
     "clean": "rm -rf _site",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p -l clean eleventy:build tailwindcss-print:build tailwindcss-print:watch tailwindcss:watch eleventy:serve",
-    "build": "run-s -l clean eleventy:build tailwindcss-print:build tailwindcss:build"
+    "start": "run-p -l clean eleventy:build print-sass:build print-sass:watch tailwindcss:watch eleventy:serve",
+    "build": "run-s -l clean eleventy:build print-sass:build tailwindcss:build"
   },
   "keywords": [
     "doc",

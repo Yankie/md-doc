@@ -1,0 +1,129 @@
+@page {
+  size: A4;
+}
+
+@page :left {
+  /* margin: 20mm 10mm 12mm 15mm; */
+  margin: 20mm;
+
+  @top-center {
+      content: string(chapter);
+      font-variant: small-caps;
+  }
+
+  @bottom-left {
+      content: counter(page)
+  }
+}
+
+@page :right {
+  /* margin: 20mm 15mm 12mm 10mm; */
+  margin: 20mm;
+
+  @top-center {
+      content: string(heading);
+      font-variant: small-caps
+  }
+
+  @bottom-right {
+      content: counter(page)
+  }
+}
+
+@page :blank {
+  @top-center {
+      content: none
+  }
+}
+
+@page clean {
+  @top-center {
+      content: none
+  }
+}
+
+html {
+  margin: 0;
+  font-size: 12pt;
+}
+body {
+  margin: 0;
+}
+
+section.fullpage {
+  page: full;
+}
+
+aside {
+  display: none;
+}
+
+section {
+  /* page: clean; */
+}
+
+#book-internal {
+  & > section {
+      /* break-before: always; */
+      break-after: always;
+      page: clean;
+  }
+  & > section > h1 {
+      string-set: chapter content();
+      padding-top: 25mm;
+  }
+
+  & > section > h2 {
+      /* page: clean; */
+      string-set: heading content();
+  }
+
+  /* h2 + p:first-child::first-letter {
+      float: left;
+      margin-top: 0.13em;
+      margin-left: -5px;
+      padding-right: 15px;
+      color: var(--color-grey-medium);
+      font-weight: 400;
+      font-size: 3.5em;
+      font-stretch: expanded;
+      line-height: .65;
+  } */
+
+}
+
+p {
+  hyphens: auto;
+}
+figure, img, pre, code, div.admotion {
+  page-break-inside: avoid;
+}
+
+#toc {
+  page: clean;
+}
+
+#toc p {
+  margin: 2em 0;
+  text-indent: 0;
+}
+
+#toc ul {
+  display: block;
+  margin: 1em 0;
+  padding: 0;
+}
+
+#toc li {
+  display: block;
+}
+
+#toc a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#toc a::before {
+  content: target-text(attr(href)) ' ' leader('.') ' ' target-counter(attr(href), page);
+}
+
