@@ -3,8 +3,12 @@ html {
   @apply scroll-smooth ;
 }
 
+h1, h2, h3, h4, h5, h6, a, section {
+  scroll-margin-top: 7rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+  @apply font-display;
 }
 
 .prose {
@@ -13,11 +17,6 @@ h1, h2, h3, h4, h5, h6 {
 
 header, footer, aside, form {
   @apply font-ui;
-}
-
-
-h1, h2, h3, h4, h5, h6, a, section {
-  scroll-margin-top: 7rem;
 }
 
 body {
@@ -35,7 +34,6 @@ footer {
   /* padding: .5rem; */
   @apply bg-base-200;
   z-index: 1020;
-  
 }
 header {
   position: sticky;

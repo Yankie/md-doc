@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  {% include 'html-head.njk' %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title or site.title }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  {# <link rel="stylesheet" media="screen" href="/assets/css/styles.css"> #}
+  {# <link rel="stylesheet"  media="print" href="/assets/css/print.css"> #}
   <link rel="stylesheet" href="/assets/css/print.css">
 
 </head>
@@ -30,7 +35,7 @@
     <section id="toc">
       <h1>Содержание</h1>
       {{ content | toc({"tags": ["h1", "h2", "h3", "h4", "h5", "h6"],"wrapper":"div","wrapperClass":"print-toc"}) | safe }}
-    </section>  
+    </section>
     {% endif %}
 
     <!-- Rest of content -->
