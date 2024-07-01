@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function(t) {
                     document.documentElement.getAttribute("data-theme") === 'dark' ? "light" : "dark" 
                     : document.documentElement.getAttribute("data-theme") === 'dark' ? "dark" : "light" 
             );
+            // document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
             // console.log("Clack!", localStorage.getItem("theme"));
         });
         
