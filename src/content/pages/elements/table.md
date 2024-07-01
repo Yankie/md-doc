@@ -23,7 +23,7 @@ title: Таблицы
 | Row 1     | Cell 1-1           |   _Cell 1-2_   |            Cell 1-3 |
 | Row 2     | **Cell 2-1**       |    Cell 2-2    |            Cell 2-3 |
 | Row 3     | Cell 3-1           |    Cell 3-2    |        ~~Cell 3-3~~ |
-[Table Caption]
+[Table Caption 1]
 
 ```
 <figure class="example"><div>
@@ -33,7 +33,7 @@ title: Таблицы
 | Row 1     | Cell 1-1           |   _Cell 1-2_   |            Cell 1-3 |
 | Row 2     | **Cell 2-1**       |    Cell 2-2    |            Cell 2-3 |
 | Row 3     | Cell 3-1           |    Cell 3-2    |        ~~Cell 3-3~~ |
-[Table Caption]
+[Table Caption 1]
 </div></figure>
 
 !!!note ПРИМЕЧАНИЕ
@@ -84,7 +84,7 @@ title: Таблицы
 |           | Cell 2-1~2~ | Cell 2-2~2~ |             | Cell 2-4~2~ |\
 |           | Cell 2-1~3~ |             | Cell 2-3~3~ |             |
 | Row 3     | Cell 3-1    | Cell 3-2    | Cell 3-3    | Cell 3-4    |
-[Table Caption]
+[Table Caption 2]
 
 ```
 <figure class="example"><div>
@@ -96,7 +96,7 @@ title: Таблицы
 |           | Cell 2-1~2~ | Cell 2-2~2~ |             | Cell 2-4~2~ |\
 |           | Cell 2-1~3~ |             | Cell 2-3~3~ |             |
 | Row 3     | Cell 3-1    | Cell 3-2    | Cell 3-3    | Cell 3-4    |
-[Table Caption]
+[Table Caption 2]
 </div></figure>
 
 ### Таблица без заголовка

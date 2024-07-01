@@ -138,8 +138,8 @@ module.exports = function(eleventyConfig) {
     },
   );
 
-  markdownLibrary.use(markdownItReplaceIt, 
-    { 
+  markdownLibrary.use(markdownItReplaceIt,
+    {
       // mdash: false,
       // ellipsis: false,
       // ndash: false
@@ -159,7 +159,7 @@ module.exports = function(eleventyConfig) {
   // =========================================
 
   eleventyConfig.setLibrary("md", markdownLibrary);
-  
+
   // URL Transformer
   let contentMap = null;
   eleventyConfig.on("eleventy.contentMap", async ({inputPathToUrl, urlToInputPath}) => {
@@ -207,7 +207,7 @@ module.exports = function(eleventyConfig) {
             if(URL.canParse(url)) { return url }
           } else {
             if(canParse(url)) { return url }
-          } 
+          }
 
           let urlObj = new URL(url, 'file://');
           // normalize given path
@@ -287,7 +287,7 @@ function findNavigationEntriesWithContent(nodes = [], key = "") {
 	}
 
 	return pages.sort(function(a, b) {
-  		return (a.order || 0) - (b.order || 0);
+    return (a.order || 0) - (b.order || 0);
   }).map(function(entry) {
 		if(!entry.title) {
 			entry.title = entry.key;
@@ -299,18 +299,20 @@ function findNavigationEntriesWithContent(nodes = [], key = "") {
 	});
 }
 
-function shiftHeaderLevel(content = "", level = "0") {
-  return content.replace(/<(\/?)h([1-6])/gm, function(match, p1, p2) {
-    // console.log(match, level)
-    if(p2) { 
+function shiftHeaderLevel(content = "", scope = "", level = "0") {
+  return content.replace(/<(\/?)h([1-6])([^>]*)>/gm, function(match, p1, p2, p3) {
+    // console.log(match, scope, level)
+    var tagAttrString = p3.replace(/id="([^"]*)"/gm, `id=\"${scope}-$1\"`);
+    // console.log(tagAttrString);
+    if(p2) {
       let nlevel = parseInt(p2) + parseInt(level);
       if ((nlevel) < 7) {
-        return `<${p1}h${nlevel}`;
+        return `<${p1}h${nlevel}${tagAttrString}>`;
       }
       else {
-        return p1==='/' ? "</p":`<p data-header="header-${nlevel}"`
+        return p1==='/' ? "</p":`<p data-header="header-${nlevel}"${tagAttrString}>`
       }
     }
     return match;
-  })
+  });
 }
